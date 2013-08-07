@@ -1,15 +1,251 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.techmahindra</groupId>
-  <artifactId>aia</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>aia</name>
-  <modules>
-    <module>aia-common</module>
-    <module>aia-dao</module>
-    <module>aia-service</module>
-    <module>aia-web</module>
-  </modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.techmahindra</groupId>
+	<artifactId>aia</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>aia</name>
+	<modules>
+		<module>aia-common</module>
+		<module>aia-dao</module>
+		<module>aia-service</module>
+		<module>aia-web</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<ehcache.version>2.4.2</ehcache.version>
+		<ehcache.web.version>2.0.2</ehcache.web.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<servlet.version>2.5</servlet.version>
+		<cxf.version>2.2.3</cxf.version>
+		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
+		<spring.security.version>3.0.5.RELEASE</spring.security.version>
+		<skipDropDb>true</skipDropDb>
+		<skipTests>true</skipTests>
+		<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
+		<jdbc.groupId>org.hsqldb</jdbc.groupId>
+		<jdbc.artifactId>hsqldb</jdbc.artifactId>
+		<jdbc.version>2.2.9</jdbc.version>
+		<jdbc.password />
+		<mail.host.name>10.8.48.54</mail.host.name>
+		<mail.username />
+		<mail.password />
+		<jbex.version>1.4.6-pro</jbex.version>
+		<hibernate.core.version>4.1.1.Final</hibernate.core.version>
+		<hibernate.annotations.version>3.5.6-Final</hibernate.annotations.version>
+		<hibernate.commons.annotations.version>3.3.0.ga</hibernate.commons.annotations.version>
+		<hibernate.ehcache.version>4.1.1.Final</hibernate.ehcache.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<forkMode>once</forkMode>
+					<argLine>-Xmx1024m</argLine>
+					<!-- Warning: The argLine below must not be separated by a new line. 
+						Otherwise, you can encounter errors with your surefire plugin during maven 
+						build -->
+
+					<argLine>
+						<![CDATA[
+							-javaagent:${settings.localRepository}/org/springframework/spring-instrument/3.1.1.RELEASE/spring-instrument-3.1.1.RELEASE.jar -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.6.8/aspectjweaver-1.6.8.jar
+						]]>
+					</argLine>
+
+					<useSystemClassloader>true</useSystemClassloader>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											sql-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.5,)
+										</versionRange>
+										<goals>
+											<goal>execute</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<!-- Support for testing Spring applications with tools such as JUnit and 
+			TestNG This artifact is generally always defined with a 'test' scope for 
+			the integration testing framework and unit testing stubs -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-instrument</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- needs extra dependencies: objenesis & hamcrest -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.9.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.powermock</groupId> <artifactId>powermock-module-junit4</artifactId> 
+			<version>1.4.12</version> <scope>test</scope> </dependency> -->
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>1.4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>1.4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.kubek2k</groupId>
+			<artifactId>springockito-annotations</artifactId>
+			<version>1.0.8</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.core.version}</version>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>springsource-repository</id>
+			<name>Spring Maven Releases, Milestones, and Snapshots</name>
+			<url>http://repo.springsource.org/snapshot</url>
+		</repository>
+
+		<repository>
+			<id>org.jboss.repository.releases</id>
+			<name>JBoss Maven Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>terracotta-releases</id>
+			<url>http://www.terracotta.org/download/reflector/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>springsource-repo</id>
+			<name>SpringSource Repository</name>
+			<url>http://repo.springsource.org/release</url>
+		</repository>
+
+		<repository>
+			<id>primefaces</id>
+			<name>Prime Faces</name>
+			<url>http://repository.primefaces.org</url>
+		</repository>
+
+		<repository>
+			<id>maven-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven 1</name>
+			<url>http://download.java.net/maven/1/</url>
+			<layout>legacy</layout>
+		</repository>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven 2</name>
+			<url>http://download.java.net/maven/2/</url>
+		</repository>
+	</repositories>
 </project>

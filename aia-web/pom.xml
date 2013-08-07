@@ -6,10 +6,8 @@
     <artifactId>aia</artifactId>
     <groupId>com.techmahindra</groupId>
     <version>1.0-SNAPSHOT</version>
-  </parent>
-  <groupId>com.techmahindra</groupId>
+  </parent>  
   <artifactId>aia-web</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>aia-web Maven Webapp</name>
   <url>http://maven.apache.org</url>
