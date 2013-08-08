@@ -2,5 +2,6 @@ Advanced Integrated Artifact Management & Deployment System
 
 Consolidates your project's existing and future artifacts. Such as:
 
-1. Managed Server
+1. Managed Servers and corresponding Accounts
+   - Broadcasts an email whenever any of the accounts' or server settings have been changed 
 2. 
