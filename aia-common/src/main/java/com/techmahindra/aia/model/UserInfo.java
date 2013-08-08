@@ -64,7 +64,7 @@ public class UserInfo implements Serializable {
     private Status status;
 
     public enum Status {
-        ACTIVE, INACTIVE, DELETED
+        ACTIVE, INACTIVE, DELETED, PENDING_APPROVAL
     }
 
     @Column(name = "createdby", nullable = false)

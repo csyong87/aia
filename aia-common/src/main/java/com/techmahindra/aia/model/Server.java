@@ -15,17 +15,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
-import org.jasypt.hibernate4.type.EncryptedStringType;
-
 import com.techmahindra.aia.model.enums.ServerEnvironment;
 
 @Entity
 @Table(name = "SERVER")
-@TypeDefs({ @TypeDef(name = "encryptedString", typeClass = EncryptedStringType.class, parameters = { @Parameter(name = "encryptorRegisteredName", value = "strongHibernateStringEncryptor") }) })
 public class Server implements Serializable {
 
     /**
@@ -44,14 +37,13 @@ public class Server implements Serializable {
     @Column(name = "ipaddress", length = 64, nullable = false)
     private String ipaddress;
 
-    @Type(type = "encryptedString")
-    @Column(name = "password", length = 255, nullable = true)
-    private String password;
-
     @Basic
     @Enumerated(EnumType.STRING)
     @Column(name = "serverenv", length = 16, nullable = false)
     private ServerEnvironment serverEnvironment;
+
+    @Column(name = "description", length = 255, nullable = true)
+    private String description;
 
     @Column(name = "createdby", nullable = false)
     private String createdBy;
@@ -112,21 +104,6 @@ public class Server implements Serializable {
      */
     public void setIpaddress(String ipaddress) {
         this.ipaddress = ipaddress;
-    }
-
-    /**
-     * @return the password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * @param password
-     *            the password to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     /**
@@ -202,6 +179,21 @@ public class Server implements Serializable {
      */
     public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description
+     *            the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }
