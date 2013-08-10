@@ -1,4 +1,4 @@
-package com.techmahindra.query;
+package com.techmahindra.aia.query;
 
 import java.io.IOException;
 import java.util.List;
