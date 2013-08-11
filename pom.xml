@@ -24,8 +24,8 @@
 		<cxf.version>2.2.3</cxf.version>
 		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
 		<spring.security.version>3.0.5.RELEASE</spring.security.version>
+		<!-- Avoid dropping the your test database accidentally -->
 		<skipDropDb>true</skipDropDb>
-		<skipTests>true</skipTests>
 		<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
 		<jdbc.groupId>org.hsqldb</jdbc.groupId>
 		<jdbc.artifactId>hsqldb</jdbc.artifactId>
@@ -114,7 +114,35 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+
+
 	</build>
+
+	<profiles>
+		<profile>
+			<id>sit-oracle-db</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<jdbc.groupId>com.oracle</jdbc.groupId>
+				<jdbc.artifactId>ojdbc6</jdbc.artifactId>
+				<jdbc.version>11.2.0.2.0</jdbc.version>
+				
+				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+				<jdbc.url>jdbc:oracle:thin:@192.168.1.1:1521:xe</jdbc.url>
+				<jdbc.username>aia</jdbc.username>
+				<jdbc.password>Password123</jdbc.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>sit</id>
+			<properties>
+				<!-- Setup the test environment for our unit test -->
+				<skipDropDb>false</skipDropDb>
+			</properties>
+		</profile>
+	</profiles>
 
 	<dependencies>
 		<dependency>
