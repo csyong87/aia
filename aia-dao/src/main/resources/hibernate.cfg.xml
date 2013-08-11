@@ -1,0 +1,19 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<mapping class="com.techmahindra.aia.model.FunctionInfo" />
+		<mapping class="com.techmahindra.aia.model.InstantAction" />
+		<mapping class="com.techmahindra.aia.model.ProxySettings" />
+		<mapping class="com.techmahindra.aia.model.RoleFunctionAccess" />
+		<mapping class="com.techmahindra.aia.model.RoleInfo" />
+		<mapping class="com.techmahindra.aia.model.Server" />
+		<mapping class="com.techmahindra.aia.model.ServerAccount" />
+		<mapping class="com.techmahindra.aia.model.ServerPort" />
+		<mapping class="com.techmahindra.aia.model.UserInfo" />
+		<mapping class="com.techmahindra.aia.model.UserRole" />
+		<mapping class="com.techmahindra.aia.model.UserRoleFunctionBlackList" />
+	</session-factory>
+</hibernate-configuration>
