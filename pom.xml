@@ -76,6 +76,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.4</version>
+				<configuration>
+					<releaseProfiles>oracle-db,prod</releaseProfiles>
+				</configuration>
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -120,15 +123,12 @@
 
 	<profiles>
 		<profile>
-			<id>sit-oracle-db</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+			<id>oracle-db</id>
 			<properties>
 				<jdbc.groupId>com.oracle</jdbc.groupId>
 				<jdbc.artifactId>ojdbc6</jdbc.artifactId>
 				<jdbc.version>11.2.0.2.0</jdbc.version>
-				
+
 				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
 				<jdbc.url>jdbc:oracle:thin:@192.168.1.1:1521:xe</jdbc.url>
 				<jdbc.username>aia</jdbc.username>
@@ -224,6 +224,11 @@
 			<version>${hibernate.core.version}</version>
 		</dependency>
 	</dependencies>
+
+	<scm>
+		<connection>scm:git:git@github.com:cjjavellana/aia.git</connection>
+		<url>scm:git:git@github.com:cjjavellana/aia.git</url>
+	</scm>
 
 	<repositories>
 		<repository>
