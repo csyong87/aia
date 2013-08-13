@@ -142,6 +142,13 @@
 				<skipDropDb>false</skipDropDb>
 			</properties>
 		</profile>
+		<profile>
+			<id>uat</id>
+			<properties>
+				<!-- Setup the test environment for our unit test -->
+				<skipDropDb>true</skipDropDb>
+			</properties>
+		</profile>
 	</profiles>
 
 	<dependencies>
