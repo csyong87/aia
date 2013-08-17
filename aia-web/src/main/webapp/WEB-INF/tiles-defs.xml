@@ -11,7 +11,7 @@
 		<put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
 	</definition>
 	
-	<definition name="noLeftMenuLayout" template="/WEB-INF/jsp/tiles/noMenuLayout.jsp">
+	<definition name="noLeftMenuLayout" template="/WEB-INF/jsp/tiles/noLeftMenuLayout.jsp">
 		<put-attribute name="title" value="TechM Integrated Artifact &amp; Reporting Management System" />
 		<put-attribute name="header" value="/WEB-INF/jsp/tiles/header.jsp" />
 		<put-attribute name="body" value="/WEB-INF/jsp/tiles/body.jsp" />
