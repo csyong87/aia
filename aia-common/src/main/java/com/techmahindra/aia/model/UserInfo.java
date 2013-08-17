@@ -22,7 +22,7 @@ import org.hibernate.annotations.TypeDefs;
 import org.jasypt.hibernate4.type.EncryptedStringType;
 
 @Entity
-@Table(name = "USERINFO")
+@Table(name = "USER_INFO")
 @TypeDefs({ @TypeDef(name = "encryptedString", typeClass = EncryptedStringType.class, parameters = { @Parameter(name = "encryptorRegisteredName", value = "strongHibernateStringEncryptor") }) })
 public class UserInfo implements Serializable {
 
@@ -48,6 +48,9 @@ public class UserInfo implements Serializable {
     @Column(name = "mobilenumber", length = 16, nullable = false)
     private String mobileNumber;
 
+    /**
+     * User's login password.
+     */
     @Column(name = "password", length = 500, nullable = false)
     private String password;
 

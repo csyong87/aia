@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import com.techmahindra.aia.model.enums.ServerEnvironment;
 
@@ -44,6 +45,10 @@ public class Server implements Serializable {
 
     @Column(name = "description", length = 255, nullable = true)
     private String description;
+
+    @Version
+    @Column(name = "version", nullable = false)
+    private Long version;
 
     @Column(name = "createdby", nullable = false)
     private String createdBy;

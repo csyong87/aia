@@ -21,7 +21,7 @@ import javax.persistence.Version;
 public class FunctionInfo implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -7914526317470517609L;
 

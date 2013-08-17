@@ -108,4 +108,100 @@ public class InstantAction implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dateupdated", nullable = true)
     private Date dateUpdated;
+
+    public Integer getInstantActionId() {
+        return instantActionId;
+    }
+
+    public void setInstantActionId(final Integer instantActionId) {
+        this.instantActionId = instantActionId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(final String token) {
+        this.token = token;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(final String action) {
+        this.action = action;
+    }
+
+    public String getExecutingClass() {
+        return executingClass;
+    }
+
+    public void setExecutingClass(final String executingClass) {
+        this.executingClass = executingClass;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(final String description) {
+        this.description = description;
+    }
+
+    public String getRequestorEmailAddress() {
+        return requestorEmailAddress;
+    }
+
+    public void setRequestorEmailAddress(final String requestorEmailAddress) {
+        this.requestorEmailAddress = requestorEmailAddress;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(final Status status) {
+        this.status = status;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(final Long version) {
+        this.version = version;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(final String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(final String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(final Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public Date getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(final Date dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
 }

@@ -1,36 +1,37 @@
 package com.techmahindra.aia.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
-
+/**
+ * Created with IntelliJ IDEA.
+ * User: Christian
+ * Date: 8/17/13
+ * Time: 8:21 AM
+ * To change this template use File | Settings | File Templates.
+ */
 @Entity
-@Table(name = "ROLE_INFO")
-public class RoleInfo implements Serializable {
+@Table(name = "MAILING_LIST")
+public class MailingList implements Serializable {
 
     /**
-     * 
+     * The primary key field
      */
-    private static final long serialVersionUID = 6236585272861645388L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "roleinfoid")
-    private Integer roleInfoId;
+    @Column(name = "mailinglistid")
+    private Integer mailingListId;
 
-    @Column(name = "name", length = 24, nullable = false)
+    /**
+     * The mailing list name
+     */
+    @Column(name = "name", length = 32, nullable = false)
     private String name;
 
+    /**
+     * The mailing list description
+     */
     @Column(name = "description", length = 255, nullable = false)
     private String description;
 
@@ -55,123 +56,72 @@ public class RoleInfo implements Serializable {
     private Date dateUpdated;
 
     /**
-     * @return the roleInfoId
+     * @return the mailingListId
      */
-    public Integer getRoleInfoId() {
-        return roleInfoId;
+    public Integer getMailingListId() {
+        return mailingListId;
     }
 
     /**
-     * @param roleInfoId
-     *            the roleInfoId to set
+     * @param mailingListId the mailingListId to set
      */
-    public void setRoleInfoId(Integer roleInfoId) {
-        this.roleInfoId = roleInfoId;
+    public void setMailingListId(Integer mailingListId) {
+        this.mailingListId = mailingListId;
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name
-     *            the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return the description
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     * @param description
-     *            the description to set
-     */
     public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     * @return the version
-     */
     public Long getVersion() {
         return version;
     }
 
-    /**
-     * @param version
-     *            the version to set
-     */
     public void setVersion(Long version) {
         this.version = version;
     }
 
-    /**
-     * @return the createdBy
-     */
     public String getCreatedBy() {
         return createdBy;
     }
 
-    /**
-     * @param createdBy
-     *            the createdBy to set
-     */
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
-    /**
-     * @return the updatedBy
-     */
     public String getUpdatedBy() {
         return updatedBy;
     }
 
-    /**
-     * @param updatedBy
-     *            the updatedBy to set
-     */
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
 
-    /**
-     * @return the dateCreated
-     */
     public Date getDateCreated() {
         return dateCreated;
     }
 
-    /**
-     * @param dateCreated
-     *            the dateCreated to set
-     */
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    /**
-     * @return the dateUpdated
-     */
     public Date getDateUpdated() {
         return dateUpdated;
     }
 
-    /**
-     * @param dateUpdated
-     *            the dateUpdated to set
-     */
     public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
-
 }
