@@ -68,8 +68,6 @@
 							-javaagent:${settings.localRepository}/org/springframework/spring-instrument/3.1.1.RELEASE/spring-instrument-3.1.1.RELEASE.jar -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.6.8/aspectjweaver-1.6.8.jar
 						]]>
 					</argLine>
-
-					<useSystemClassloader>true</useSystemClassloader>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -128,9 +126,9 @@
 				<jdbc.groupId>com.oracle</jdbc.groupId>
 				<jdbc.artifactId>ojdbc6</jdbc.artifactId>
 				<jdbc.version>11.2.0.2.0</jdbc.version>
-
+                <hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
 				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
-				<jdbc.url>jdbc:oracle:thin:@192.168.1.1:1521:xe</jdbc.url>
+				<jdbc.url>jdbc:oracle:thin:@192.168.59.132:1521:xe</jdbc.url>
 				<jdbc.username>aia</jdbc.username>
 				<jdbc.password>Password123</jdbc.password>
 			</properties>
@@ -139,6 +137,7 @@
 			<id>sit</id>
 			<properties>
 				<!-- Setup the test environment for our unit test -->
+                <skipTests>false</skipTests>
 				<skipDropDb>false</skipDropDb>
 			</properties>
 		</profile>
