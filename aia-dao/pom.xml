@@ -33,7 +33,7 @@
                         <jdk5>true</jdk5>
                         <propertyfile>target/test-classes/jdbc.properties</propertyfile>
                         <skip>${skipTests}</skip>
-                        <export>true</export>
+                        <export>false</export>
                         <outputfilename>aia-schema.sql</outputfilename>
                     </componentProperties>
                 </configuration>
