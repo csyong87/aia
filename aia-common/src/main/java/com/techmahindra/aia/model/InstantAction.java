@@ -55,7 +55,7 @@ public class InstantAction implements Serializable {
      * The fully qualified name of the class
      * </p>
      */
-    @Column(name = "action", length = 255, nullable = false)
+    @Column(name = "executingclass", length = 255, nullable = false)
     private String executingClass;
 
     /**

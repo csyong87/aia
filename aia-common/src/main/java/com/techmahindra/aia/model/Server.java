@@ -32,7 +32,7 @@ public class Server implements Serializable {
     @Column(name = "serverid")
     private Integer serverId;
 
-    @Column(name = "serverid", length = 24, nullable = false)
+    @Column(name = "hostname", length = 24, nullable = false)
     private String hostname;
 
     @Column(name = "ipaddress", length = 64, nullable = false)

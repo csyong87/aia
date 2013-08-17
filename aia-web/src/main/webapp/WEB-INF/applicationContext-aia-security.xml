@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <security:http auto-config="false"
+                   security-context-repository-ref="securityContextRepository"
+                   entry-point-ref="authenticationEntryPoint">
+
+        <security:custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter"/>
+
+        <security:intercept-url pattern="/styles/**" filters="none"/>
+        <security:intercept-url pattern="/scripts/**" filters="none"/>
+        <security:intercept-url pattern="/images/**" filters="none"/>
+        <!--  <security:intercept-url pattern="/shared/**"
+            filters="none" />-->
+
+        <security:intercept-url pattern="/login" filters="none"/>
+        <security:intercept-url pattern="/doLogout.html" filters="none"/>
+        <security:intercept-url pattern="/addUser.html" filters="none"/>
+        <security:intercept-url pattern="/removeUser.html" filters="none"/>
+        <security:intercept-url pattern="/concurrentusers.jsp" filters="none"/>
+
+        <security:intercept-url pattern="/welcome.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/sessionTimeout.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+
+        <!-- All Users -->
+        <security:intercept-url pattern="/checkFsrs.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+
+        <!-- System admin functions -->
+        <security:intercept-url pattern="/managecontractadmin.html" access="ROLE_SYSTEM_ADMIN"/>
+
+
+
+        <security:intercept-url pattern="/j_spring_security_check" access="ROLE_ANONYMOUS"/>
+        <security:intercept-url pattern="/login" access="ROLE_ANONYMOUS"/>
+
+        <!-- Redirects to /sessionTimeout.html if the session is invalid -->
+        <security:session-management invalid-session-url="/doLogout.html">
+            <!-- No concurrent same login access -->
+            <security:concurrency-control max-sessions="1"/>
+        </security:session-management>
+
+        <!-- <security:form-login login-page="/login.html" login-processing-url="/j_spring_security_check"
+            authentication-failure-url="/login.html?r=1" default-target-url="/welcome.html"
+            /> -->
+
+        <!-- Configures the logout process -->
+        <security:logout invalidate-session="true" logout-url="/logout.html" logout-success-url="/doLogout.html"/>
+
+    </security:http>
+
+    <bean id="exceptionTranslationFilter"
+          class="org.springframework.security.web.access.ExceptionTranslationFilter">
+        <property name="authenticationEntryPoint" ref="authenticationEntryPoint"/>
+        <property name="accessDeniedHandler" ref="accessDeniedHandler"/>
+    </bean>
+
+    <bean id="authenticationEntryPoint"
+          class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <property name="loginFormUrl" value="/login"/>
+    </bean>
+
+    <bean id="accessDeniedHandler"
+          class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+        <property name="errorPage" value="/login"/>
+    </bean>
+
+    <bean id="authenticationSuccessHandler"
+          class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+        <constructor-arg value="/main.html"/>
+    </bean>
+
+    <bean id="authenticationFailureHandler"
+          class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+        <constructor-arg value="/login"/>
+    </bean>
+
+    <bean id="authenticationFilter"
+          class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="filterProcessesUrl" value="/authenticate"/>
+        <property name="postOnly" value="false"/>
+        <property name="usernameParameter" value="username"/>
+        <property name="passwordParameter" value="password"/>
+        <property name="authenticationSuccessHandler" ref="authenticationSuccessHandler"/>
+        <property name="authenticationFailureHandler" ref="authenticationFailureHandler"/>
+    </bean>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="daoAuthenticationProvider" />
+    </security:authentication-manager>
+
+    <bean id="securityContextRepository"
+          class="org.springframework.security.web.context.HttpSessionSecurityContextRepository"></bean>
+
+    <!-- <bean id="ltaUserContextDetailsMapper" class="sg.gov.lta.cpms.security.LtaUserDetailsContextMapper"
+        /> -->
+    <bean id="securityContextPersistenceFilter"
+          class="org.springframework.security.web.context.SecurityContextPersistenceFilter">
+        <property name='securityContextRepository'>
+            <bean
+                    class='org.springframework.security.web.context.HttpSessionSecurityContextRepository'>
+                <property name='allowSessionCreation' value='true'/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- -->
+
+    <bean id="contextSource" class="${ldap.context.source}">
+        <constructor-arg value="${ldap.protocol}://${ldap.host}:${ldap.port}"/>
+    </bean>
+
+    <bean id="daoAuthenticationProvider"
+          class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <property name="userDetailsService" ref="userDetailService"/>
+        <property name="passwordEncoder" ref="passwordEncoder"/>
+    </bean>
+
+    <bean id="userDetailService" class="com.techmahindra.aia.service.security.UserDetailServiceImpl" />
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+</beans>

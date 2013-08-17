@@ -23,14 +23,21 @@
 		<servlet.version>2.5</servlet.version>
 		<cxf.version>2.2.3</cxf.version>
 		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
-		<spring.security.version>3.0.5.RELEASE</spring.security.version>
+		<spring.security.version>3.1.4.RELEASE</spring.security.version>
+        <jsp.version>2.0</jsp.version>
 		<!-- Avoid dropping the your test database accidentally -->
 		<skipDropDb>true</skipDropDb>
-		<jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
-		<jdbc.groupId>org.hsqldb</jdbc.groupId>
-		<jdbc.artifactId>hsqldb</jdbc.artifactId>
-		<jdbc.version>2.2.9</jdbc.version>
-		<jdbc.password />
+
+        <hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
+
+        <jdbc.groupId>com.oracle</jdbc.groupId>
+        <jdbc.artifactId>ojdbc6</jdbc.artifactId>
+        <jdbc.version>11.2.0.2.0</jdbc.version>
+        <jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+        <jdbc.url>jdbc:oracle:thin:@192.168.59.132:1521:xe</jdbc.url>
+        <jdbc.username>aia</jdbc.username>
+        <jdbc.password>Password123</jdbc.password>
+
 		<mail.host.name>10.8.48.54</mail.host.name>
 		<mail.username />
 		<mail.password />
@@ -129,10 +136,26 @@
                 <hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
 				<jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
 				<jdbc.url>jdbc:oracle:thin:@192.168.59.132:1521:xe</jdbc.url>
-				<jdbc.username>aia</jdbc.username>
+				<jdbc.username>aia-sit</jdbc.username>
 				<jdbc.password>Password123</jdbc.password>
 			</properties>
 		</profile>
+        <profile>
+            <id>aia-christian</id>
+            <properties>
+                <jdbc.groupId>com.oracle</jdbc.groupId>
+                <jdbc.artifactId>ojdbc6</jdbc.artifactId>
+                <jdbc.version>11.2.0.2.0</jdbc.version>
+                <hibernate.dialect>org.hibernate.dialect.Oracle10gDialect</hibernate.dialect>
+                <jdbc.driverClassName>oracle.jdbc.OracleDriver</jdbc.driverClassName>
+                <jdbc.url>jdbc:oracle:thin:@192.168.59.132:1521:xe</jdbc.url>
+                <jdbc.username>aia</jdbc.username>
+                <jdbc.password>Password123</jdbc.password>
+                <!-- Setup the test environment for our unit test -->
+                <skipTests>false</skipTests>
+                <skipDropDb>false</skipDropDb>
+            </properties>
+        </profile>
 		<profile>
 			<id>sit</id>
 			<properties>

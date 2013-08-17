@@ -13,6 +13,26 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+    </build>
+
   <dependencies>
     <dependency>
       <groupId>com.techmahindra</groupId>
@@ -20,4 +40,5 @@
       <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
+
 </project>

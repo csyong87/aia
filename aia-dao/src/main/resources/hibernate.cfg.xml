@@ -12,6 +12,7 @@
 		<mapping class="com.techmahindra.aia.model.Server" />
 		<mapping class="com.techmahindra.aia.model.ServerAccount" />
 		<mapping class="com.techmahindra.aia.model.ServerPort" />
+        <mapping class="com.techmahindra.aia.model.Settings" />
 		<mapping class="com.techmahindra.aia.model.UserInfo" />
 		<mapping class="com.techmahindra.aia.model.UserRole" />
 		<mapping class="com.techmahindra.aia.model.UserRoleFunctionBlackList" />
