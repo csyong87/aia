@@ -1,19 +1,32 @@
 package com.techmahindra.aia.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
 /**
- * Created with IntelliJ IDEA.
- * User: Christian
- * Date: 8/17/13
- * Time: 8:21 AM
- * To change this template use File | Settings | File Templates.
+ * 
+ * @author Christian
+ * 
  */
 @Entity
 @Table(name = "MAILING_LIST")
 public class MailingList implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -6000234696633407333L;
 
     /**
      * The primary key field
@@ -63,7 +76,8 @@ public class MailingList implements Serializable {
     }
 
     /**
-     * @param mailingListId the mailingListId to set
+     * @param mailingListId
+     *            the mailingListId to set
      */
     public void setMailingListId(Integer mailingListId) {
         this.mailingListId = mailingListId;

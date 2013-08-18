@@ -1,32 +1,45 @@
 package com.techmahindra.aia.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
 /**
- * Created with IntelliJ IDEA.
- * User: Christian
- * Date: 8/17/13
- * Time: 4:15 PM
- * To change this template use File | Settings | File Templates.
+ * 
+ * @author Christian
+ * 
  */
 @Entity
 @Table(name = "SETTINGS")
 public class Settings implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -7850796082009891375L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name =  "settingsId")
+    @Column(name = "settingsId")
     private Integer settingsId;
 
-    @Column(name =  "name", length = 32, nullable =  false)
+    @Column(name = "name", length = 32, nullable = false)
     private String name;
 
-    @Column(name =  "description", length = 255, nullable =  false)
+    @Column(name = "description", length = 255, nullable = false)
     private String description;
 
-    @Column(name =  "value", length = 255, nullable =  false)
+    @Column(name = "value", length = 255, nullable = false)
     private String value;
 
     @Version

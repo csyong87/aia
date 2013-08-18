@@ -1,0 +1,57 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family: Verdana, Helvetica, sans serif;
+	font-size: 11px;
+}
+
+.logo-header{float:left; width:974px; height:50px; padding:20px 0px 0px 10px;}
+.logolink{float:left;display:block;width:130px;height:37px; background:url(images/tmlogo.png) no-repeat center; text-indent:-5000px;}
+.main-container{float:left; width:974px; height:auto;}
+.main-container .t-t{float:left;background:url(images/t-bg.gif) repeat-x; width:974px; height:50px;}
+.main-container .t-t span.tt-l-corner{ float:left; background:url(images/t-l-corner.gif) no-repeat left; width:15px; height:50px;}
+.main-container .t-t span.tt-r-corner{float:right; background:url(images/t-r-corner.gif) no-repeat right; width:15px; height:50px;}
+.main-container .t-b{float:left;background:url(images/b-bg.gif) repeat-x; width:974px; height:15px;}
+.main-container .t-b span.tb-l-corner{ float:left; background:url(images/b-l-corner.gif) no-repeat left; width:15px; height:15px;}
+.main-container .t-b span.tb-r-corner{float:right; background:url(images/b-r-corner.gif) no-repeat right; width:15px; height:15px;}
+.main-container .login-mainarea{ float:left;width:972px; height:auto; background: #FFF; border-left:1px solid #d2d2d2;border-right:1px solid #d2d2d2; padding:0px 0px 5px 0px;}
+.graybox-wrapper{margin:0px auto; width:316px;}
+.graybox-signintxt{float:left; margin:0px; padding:5px 0px 7px 8px; width:308px; height:20px; text-align:left;}
+
+.ssoParahead1 {font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; color: #000000; text-decoration: none; visited: #000000; padding-left:6px; }
+.graybox-container{float:left; width:316px; height:auto;}
+.graybox-container .gb-t{float:left;width:316px; height:20px; background:url(images/gray-t-line.gif) repeat-x;}
+.graybox-container .gb-t span.gb-t-l{float:left; width:20px; height:20px; background:url(images/gray-b-l-t.gif) no-repeat left;}
+.graybox-container .gb-t span.gb-t-r{float:right; width:20px; height:20px; background:url(images/gray-b-r-t.gif) no-repeat right;}
+.graybox-container .gb-b{float:left;width:316px; height:20px; background:url(images/gray-b-line.gif) repeat-x; padding-bottom:5px;}
+.graybox-container .gb-b span.gb-b-l{float:left; width:20px; height:20px; background:url(images/gray-b-l-b.gif) no-repeat left;}
+.graybox-container .gb-b span.gb-b-r{float:right; width:20px; height:20px; background:url(images/gray-b-r-b.gif) no-repeat right;}
+
+.graybox-container .gb-m{float:left;width:314px; height:auto; background:#f3f3f5;border-left:1px solid #d2d2d2;border-right:1px solid #d2d2d2;}
+.graybox-container .gb-m .signinform{float:left; padding:0px 20px 5px 20px; width:276px; height:auto; font-size:13px; font-family: Arial, Helvetica, sans-serif;}
+.signinform form label.sf-lbl, .signinform form label{float:left;width:276px;height:15px; padding-top:1px;}
+.signinform form label.password {margin-top: 10px;}
+.signinform form input.sf-txtbox, .signinform form input[type='text']{float:left;width:272px;height:20px; border:0px; border:1px solid #7e9db9; margin-top:5px;}
+.signinform form input.sf-pwdbox, .signinform form input[type='password']{float:left;width:272px;height:20px;border:0px; border:1px solid #7e9db9;margin-top:5px;}
+.signinformrowtext{width:auto; text-align:right;  padding-top:2px;}
+.signinform form .sf-btnarea{float:left; width:272px; margin-top:10px; text-align:left;}
+.sf-btnarea .buttonLinkText{float:left; width:auto; height:28px;background:url(images/red-b-m-bg.gif) repeat-x top center;font-size:13px;text-decoration:none;color:#FFF;font-weight:bold; padding:0px 0px 0px 0px; cursor:pointer;}
+.sf-btnarea .buttonLinkText .blt-l{float:left; width:3px; height:28px; background:url(images/red-b-l.gif) #666 no-repeat left;}
+.sf-btnarea .buttonLinkText .blt-txt{float:left;width:auto; height:22px; padding:5px 5px 0px 5px;background:url(images/red-b-m-bg.gif) #666 repeat-x top center; vertical-align:middle}
+.sf-btnarea .buttonLinkText .blt-r{float:left; width:4px; height:28px; background:url(images/red-b-r.gif) #666 no-repeat left;}
+
+.footer-info{float:left;padding:30px 15px 0px 15px; width:auto; height:auto;font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666;}
+.footer-info div{border-top:1px solid #E4E4E4; padding-top:10px;}
+
+.login-error {
+	color: red;
+}
+
+.aia-header {width: 980px; height: 40px;}
+.no-left-menu-main-content {width: 980px;height: 600px;}
+
+.aia-footer {
+	width: 980px;
+	height: 10px;
+}
+

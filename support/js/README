@@ -1,0 +1,10 @@
+jquery-1.10.2.min.js
+==========================================================================================================
+jquery-1.10.2.min.js is a production ready minified version of the jquery 1.10.x java script library.
+This file will be copied into the aia-web artifact upon build of the production profile
+
+
+jquery-ui-1.10.3.custom.min.js
+==========================================================================================================
+jquery-ui-1.10.3.custom.min.js is a production ready minified version of the jquery ui 1.10.x java script library.
+This file will be copied into the aia-web artifact upon build of the production profile
