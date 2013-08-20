@@ -44,10 +44,10 @@ body {
 .footer-info div{border-top:1px solid #E4E4E4; padding-top:10px;}
 
 .login-error {
-	color: red;
+	color: #ff3b58;
 }
 
-.aia-header {width: 980px; height: 40px;}
+.aia-header {width: 980px; height: 70px;}
 .no-left-menu-main-content {width: 980px;height: 600px;}
 
 .aia-footer {

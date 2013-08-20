@@ -104,6 +104,7 @@
 							<onError>continue</onError>
 							<srcFiles>
 								<srcFile>../aia-dao/target/hibernate3/sql/aia-schema.sql</srcFile>
+                                <srcFile>../support/sql/initial-inserts.sql</srcFile>
 							</srcFiles>
 						</configuration>
 					</execution>
