@@ -15,15 +15,20 @@
 	<security:http pattern="/login.html" security="none" />
 	<security:http pattern="/logout.html" security="none" />
 
-	<security:http auto-config="false" security-context-repository-ref="securityContextRepository" entry-point-ref="authenticationEntryPoint">
+	<security:http auto-config="false"
+		security-context-repository-ref="securityContextRepository"
+		entry-point-ref="authenticationEntryPoint">
 
-		<security:custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" />
-		<security:intercept-url pattern="/main.html" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-	
-		 <security:session-management>
-	        <security:concurrency-control max-sessions="1" />
-	    </security:session-management>
-	    
+		<security:custom-filter position="FORM_LOGIN_FILTER"
+			ref="authenticationFilter" />
+		<security:intercept-url pattern="/main.html"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+		<security:session-management>
+			<security:concurrency-control
+				max-sessions="1" />
+		</security:session-management>
+
 		<!-- Configures the logout process -->
 		<security:logout invalidate-session="true" logout-url="/logout.html"
 			logout-success-url="/login.html" />
@@ -68,7 +73,11 @@
 
 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider
-			ref="daoAuthenticationProvider" />
+			ref="daoAuthenticationProvider">
+			<security:password-encoder ref="passwordEncoder">
+				<security:salt-source user-property="username" />
+			</security:password-encoder>
+		</security:authentication-provider>
 	</security:authentication-manager>
 
 	<bean id="securityContextRepository"
@@ -87,11 +96,14 @@
 	<bean id="daoAuthenticationProvider"
 		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
 		<property name="userDetailsService" ref="userDetailService" />
-		<property name="passwordEncoder" ref="passwordEncoder" />
 	</bean>
 
 	<bean id="userDetailService"
 		class="com.techmahindra.aia.service.security.UserDetailServiceImpl" />
+
 	<bean id="passwordEncoder"
-		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<constructor-arg value="256" />
+		<property name="iterations" value="1024" />
+	</bean>
 </beans>
