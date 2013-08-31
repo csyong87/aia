@@ -182,7 +182,7 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 		</dependency>
-		<!-- Support for testing Spring applications with tools such as JUnit and 
+		<!-- Support for testing Spring applications with test such as JUnit and
 			TestNG This artifact is generally always defined with a 'test' scope for 
 			the integration testing framework and unit testing stubs -->
 		<dependency>

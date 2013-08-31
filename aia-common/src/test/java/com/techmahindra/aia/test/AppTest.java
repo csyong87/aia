@@ -1,4 +1,4 @@
-package com.techmahindra;
+package com.techmahindra.aia.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

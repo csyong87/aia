@@ -1,4 +1,4 @@
-package com.techmahindra;
+package com.techmahindra.aia.test;
 
 import org.hibernate.Query;
 import org.hibernate.Session;

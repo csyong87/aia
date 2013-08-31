@@ -1,4 +1,4 @@
-package com.techmahindra.aia.tools;
+package com.techmahindra.aia.test.tools;
 
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 
