@@ -6,9 +6,22 @@
 </div>
 <sec:authorize access="isAuthenticated()">
 	<div class="misc">
-		<ul>
-			<li><a href="/aia-web/settings.html">Settings</a></li>
-			<li><a href="/aia-web/settings.html">My Profile</a></li>
+		<ul class="nav-menu">
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<li><a href="/aia-web/settings.html">Administration</a>
+				<ul>
+					<li><a href="/aia-web/userManagement.html">User Management</a></li>
+					<li><a href="/aia-web/systemManagement.html">System Management</a></li>
+				</ul>
+			</li>
+			</sec:authorize>
+			<li>
+				<a href="/aia-web/myProfile.html">My Profile</a>
+				<ul class="menu-box-small">
+					<li><a href="/aia-web/myProfile.html">My Profile</a></li>
+					<li><a href="/aia-web/logout.html">Logout</a></li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </sec:authorize>
