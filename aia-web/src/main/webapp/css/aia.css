@@ -20,7 +20,7 @@ body {
 .logolink{float:left;display:block;width:130px;height:37px; background:url(images/tmlogo.png) no-repeat center; text-indent:-5000px;}
 .main-container{
 	float:left; 
-	width:auto; 
+	width:90%; 
 	height:auto;
 }
 .main-container .t-t{float:left;background:url(images/t-bg.gif) repeat-x; width:100%; height:50px;}
@@ -82,7 +82,7 @@ body {
 }
 
 .aia-header {
-	/* width: 980px; */
+	width: 90%;
 	height: 50px;
 }
 .no-left-menu-main-content {width: 980px;height: 600px;}
