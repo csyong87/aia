@@ -235,6 +235,7 @@
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-module-junit4</artifactId>
 			<version>1.4.12</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.kubek2k</groupId>
