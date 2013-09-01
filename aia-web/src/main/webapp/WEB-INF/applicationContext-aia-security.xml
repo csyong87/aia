@@ -17,21 +17,17 @@
 
 	<security:http auto-config="false"
 		security-context-repository-ref="securityContextRepository"
-		entry-point-ref="authenticationEntryPoint">
+		entry-point-ref="authenticationEntryPoint" use-expressions="true">
 
-		<security:custom-filter position="FORM_LOGIN_FILTER"
-			ref="authenticationFilter" />
-		<security:intercept-url pattern="/main.html"
-			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:custom-filter position="FORM_LOGIN_FILTER" ref="authenticationFilter" />
+		<security:intercept-url pattern="/main.html" access="isAuthenticated()" />
 
 		<security:session-management>
-			<security:concurrency-control
-				max-sessions="1" />
+			<security:concurrency-control max-sessions="1" />
 		</security:session-management>
 
 		<!-- Configures the logout process -->
-		<security:logout invalidate-session="true" logout-url="/logout.html"
-			logout-success-url="/login.html" />
+		<security:logout invalidate-session="true" logout-url="/logout.html" logout-success-url="/login.html" />
 
 	</security:http>
 
