@@ -5,16 +5,31 @@ body {
 	font-size: 11px;
 }
 
-.logo-header{float:left; width:974px; height:50px; padding:20px 0px 0px 10px;}
+.logo-header{
+	float:left; 
+	width:auto; 
+	height:50px; 
+	padding: 0px 0px 0px 5px;
+}
+
+.misc {
+	float: right;
+	height: 50px;
+	width: auto;
+}
 .logolink{float:left;display:block;width:130px;height:37px; background:url(images/tmlogo.png) no-repeat center; text-indent:-5000px;}
-.main-container{float:left; width:974px; height:auto;}
-.main-container .t-t{float:left;background:url(images/t-bg.gif) repeat-x; width:974px; height:50px;}
+.main-container{
+	float:left; 
+	width:auto; 
+	height:auto;
+}
+.main-container .t-t{float:left;background:url(images/t-bg.gif) repeat-x; width:100%; height:50px;}
 .main-container .t-t span.tt-l-corner{ float:left; background:url(images/t-l-corner.gif) no-repeat left; width:15px; height:50px;}
 .main-container .t-t span.tt-r-corner{float:right; background:url(images/t-r-corner.gif) no-repeat right; width:15px; height:50px;}
-.main-container .t-b{float:left;background:url(images/b-bg.gif) repeat-x; width:974px; height:15px;}
+.main-container .t-b{float:left;background:url(images/b-bg.gif) repeat-x; width:100%; height:15px;}
 .main-container .t-b span.tb-l-corner{ float:left; background:url(images/b-l-corner.gif) no-repeat left; width:15px; height:15px;}
 .main-container .t-b span.tb-r-corner{float:right; background:url(images/b-r-corner.gif) no-repeat right; width:15px; height:15px;}
-.main-container .login-mainarea{ float:left;width:972px; height:auto; background: #FFF; border-left:1px solid #d2d2d2;border-right:1px solid #d2d2d2; padding:0px 0px 5px 0px;}
+.main-container .login-mainarea{ float:left;width:100%; height:auto; background: #FFF; border-left:1px solid #d2d2d2;border-right:1px solid #d2d2d2; padding:0px 0px 0px 0px;}
 .graybox-wrapper{margin:0px auto; width:316px;}
 .graybox-signintxt{float:left; margin:0px; padding:5px 0px 7px 8px; width:308px; height:20px; text-align:left;}
 
@@ -40,18 +55,92 @@ body {
 .sf-btnarea .buttonLinkText .blt-txt{float:left;width:auto; height:22px; padding:5px 5px 0px 5px;background:url(images/red-b-m-bg.gif) #666 repeat-x top center; vertical-align:middle}
 .sf-btnarea .buttonLinkText .blt-r{float:left; width:4px; height:28px; background:url(images/red-b-r.gif) #666 no-repeat left;}
 
-.footer-info{float:left;padding:30px 15px 0px 15px; width:auto; height:auto;font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666;}
+.footer-info{float:left;padding:30px 15px 0px 15px; width:auto; height:auto;font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #666; border-left: 1px solid #d2d2d2; border-right: 1px solid #d2d2d2;}
 .footer-info div{border-top:1px solid #E4E4E4; padding-top:10px;}
 
 .login-error {
 	color: #ff3b58;
 }
 
-.aia-header {width: 980px; height: 70px;}
-.no-left-menu-main-content {width: 980px;height: 600px;}
-
-.aia-footer {
-	width: 980px;
-	height: 10px;
+.misc li {
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 12px;
+	float: left;
+	position: relative;
+	list-style: none;
 }
 
+.misc a{
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+	display: block;
+	padding: 8px 10px;
+	margin: 0;
+	-webkit-border-radius: 1.6em;
+	-moz-border-radius: 1.6em;
+}
+
+.aia-header {
+	/* width: 980px; */
+	height: 50px;
+}
+.no-left-menu-main-content {width: 980px;height: 600px;}
+.aia-footer { width: 980px; height: 10px;}
+
+.nav-menu {
+	float: left;
+	padding: 0 0 0;
+}
+
+.nav-menu li {
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 12px;
+	float: left;
+	position: relative;
+	list-style: none;
+}
+
+.nav-menu a {
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+	display: block;
+	padding: 8px 20px;
+	margin: 0;
+	-webkit-border-radius: 1.6em;
+	-moz-border-radius: 1.6em;
+	/* text-shadow: 0 1px 1px rgba(0,0,0, .3); */
+}
+
+.nav-menu li:hover, .nav-menu li > a:hover {
+	/* background: #dfdfdf; */
+	color: #230eed;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.nav-menu li:hover > ul {
+	display: block;
+}
+
+.nav-menu ul {	
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 185px;
+	position: absolute;
+	top: 30px;
+	left: 0;
+	
+	background: #ddd url(images/gradient.png) repeat-x 0 0;
+	border: solid 1px #b4b4b4;
+
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0, .3);
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0, .3);
+	box-shadow: 0 1px 3px rgba(0,0,0, .3);
+}

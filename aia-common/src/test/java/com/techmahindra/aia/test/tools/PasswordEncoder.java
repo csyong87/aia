@@ -8,6 +8,5 @@ public class PasswordEncoder {
         ShaPasswordEncoder pe = new ShaPasswordEncoder(256);
         pe.setIterations(1024);
         System.out.println(pe.encodePassword("password", "christian"));
-
     }
 }

@@ -21,7 +21,45 @@
 	<tiles:insertAttribute name="header" />
 </div>
 <div class="main-container">
-	<tiles:insertAttribute name="body" />
+	<div class="t-t">
+		<span class="tt-l-corner"></span>
+		<sec:authorize access="isAuthenticated()">
+	        <span>
+	            <ul class="nav-menu">
+					<li><a href="/aia-web/dashboard.html">Dashboard</a></li>
+					<li><a href="/aia-web/deployments.html">Deployments</a>
+	                	<ul>
+	                		<li><a href="/aia-web/createDeployment.html">Create Deployment</a></li>
+	                	</ul>
+	                </li>
+	                <li><a href="/aia-web/reports.html">Reports</a>
+	                	<ul>
+	                		<li><a href="/aia-web/mwreport.html">Middleware</a></li>
+	                		<li><a href="/aia-web/wcreport.html">Webcomm</a></li>
+	                	</ul>
+	                </li>
+	            </ul>
+	        </span>
+        </sec:authorize>
+		<span class="tt-r-corner"></span>
+	</div>
+	<div class="t-m">
+		<div class="login-mainarea">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<div class="footer-info">
+			<div>
+				 This site is intended solely for use by TechM's authorized users. Use of this site is subject to the Legal Notices, Terms for Use and Privacy Statement located on this site. 
+				 Use of the site by customers and partners, if authorized, is also subject to the terms of your contract(s) with TechM. 
+				 Use of this site by TechM employees is also subject to company policies, including the Code of Conduct. 
+				 Unauthorized access or breach of these terms may result in termination of your authorization to use this site and/or civil and criminal penalties.
+			</div>
+		</div>
+	</div>
+	<div class="t-b">
+		<span class="tb-l-corner"></span>
+		<span class="tb-r-corner"></span>
+	</div>
 </div>
 <div class="aia-footer">
 	<tiles:insertAttribute name="footer" />
