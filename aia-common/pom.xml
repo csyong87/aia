@@ -54,12 +54,13 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.1.0.Final</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-annotations</artifactId> 
-			<version>${hibernate.annotations.version}</version> <exclusions> <exclusion> 
-			<artifactId>ehcache</artifactId> <groupId>net.sf.ehcache</groupId> </exclusion> 
-			</exclusions> </dependency> <dependency> <groupId>org.hibernate</groupId> 
-			<artifactId>hibernate-commons-annotations</artifactId> <version>${hibernate.commons.annotations.version}</version> 
-			</dependency> -->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>14.0.1</version>
+        </dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
