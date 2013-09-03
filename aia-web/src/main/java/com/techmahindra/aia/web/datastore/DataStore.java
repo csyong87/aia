@@ -51,8 +51,8 @@ public class DataStore implements Serializable {
     /**
      * Retrieve an object identified by the parameter <tt>key</tt> from the cache
      *
-     * @param key
-     * @return
+     * @param key The cached object's identifier
+     * @return The cached object identified by {@code key}
      */
     public final Object get(final String key) {
         return cache.get(key);
@@ -62,7 +62,7 @@ public class DataStore implements Serializable {
      * Remove an object identified by the parameter <tt>key</tt> from the cache
      * <p/>
      *
-     * @param key 
+     * @param key The cached object's identifier
      */
     public final void remove(final String key) {
         if (cache.containsKey(key)) {

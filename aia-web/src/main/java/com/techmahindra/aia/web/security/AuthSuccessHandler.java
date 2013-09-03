@@ -37,16 +37,13 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler im
     @Autowired
     private UserInfoService userInfoService;
 
-    public AuthSuccessHandler() {
-    }
-
     /**
      * Constructor which sets the <tt>defaultTargetUrl</tt> property of the base class.
      * 
      * @param defaultTargetUrl
      *            the URL to which the user should be redirected on successful authentication.
      */
-    public AuthSuccessHandler(String defaultTargetUrl) {
+    public AuthSuccessHandler(final String defaultTargetUrl) {
         setDefaultTargetUrl(defaultTargetUrl);
     }
 
@@ -54,6 +51,13 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler im
      * Invokes the configured {@code RedirectStrategy} with the URL returned by the {@code determineTargetUrl} method.
      * <p>
      * The redirect will not be performed if the response has already been committed.
+     *
+     * @param request The http request object
+     * @param response The http response object
+     * @param authentication The user's authentication principal
+     *
+     * @throws IOException
+     * @throws ServletException
      */
     @Override
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
