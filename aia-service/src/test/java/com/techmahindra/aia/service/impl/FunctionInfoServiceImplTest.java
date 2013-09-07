@@ -33,17 +33,17 @@ public class FunctionInfoServiceImplTest extends UnitTestBase {
      */
     @Before
     public void init() {
-        try {
-            RoleFunctionAccess rfa = new RoleFunctionAccess();
-            rfa.setRoleInfoId(3); //developer role
-            rfa.setFunctionInfoId(100); //dashboard menu
-            rfa.setCreatedBy("ADMIN");
-            rfa.setDateCreated(Calendar.getInstance().getTime());
-            rfa.setStatus(RoleFunctionAccess.Status.ACTIVE);
-            roleFunctionAccessDao.addRoleFunctionAccess(rfa);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            RoleFunctionAccess rfa = new RoleFunctionAccess();
+//            rfa.setRoleInfoId(3); //developer role
+//            rfa.setFunctionInfoId(100); //dashboard menu
+//            rfa.setCreatedBy("ADMIN");
+//            rfa.setDateCreated(Calendar.getInstance().getTime());
+//            rfa.setStatus(RoleFunctionAccess.Status.ACTIVE);
+//            roleFunctionAccessDao.addRoleFunctionAccess(rfa);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**

@@ -26,18 +26,11 @@
 		<sec:authorize access="isAuthenticated()">
 	        <span>
 	            <ul class="nav-menu">
-					<li><a href="/aia-web/dashboard.html">Dashboard</a></li>
-					<li><a href="/aia-web/deployments.html">Deployments</a>
-	                	<ul>
-	                		<li><a href="/aia-web/createDeployment.html">Create Deployment</a></li>
-	                	</ul>
-	                </li>
-	                <li><a href="/aia-web/reports.html">Reports</a>
-	                	<ul>
-	                		<li><a href="/aia-web/mwreport.html">Middleware</a></li>
-	                		<li><a href="/aia-web/wcreport.html">Webcomm</a></li>
-	                	</ul>
-	                </li>
+                    <c:if test="${sessionScope.workFunctions ne null}">
+                        <c:forEach var="item" items="${sessionScope.workFunctions}">
+                            <menu:menu node="${item}" />
+                        </c:forEach>
+                    </c:if>
 	            </ul>
 	        </span>
         </sec:authorize>

@@ -1,6 +1,5 @@
 package com.techmahindra.aia.web.security;
 
-import com.techmahindra.aia.constants.Constants;
 import com.techmahindra.aia.model.UserInfo;
 import com.techmahindra.aia.service.FunctionInfoService;
 import com.techmahindra.aia.service.UserInfoService;
@@ -8,7 +7,6 @@ import com.techmahindra.aia.service.model.UserContext;
 import com.techmahindra.aia.web.datastore.DataStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -71,13 +69,6 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler im
         }
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        //check if the logged in user has an admin role
-        for (GrantedAuthority ga : auth.getAuthorities()) {
-            if(ga.getAuthority().equalsIgnoreCase(Constants.ROLE_ADMIN)) {
-
-            }
-        }
 
         // get the user's info object
         UserInfo userInfo = userInfoService.getUserInfoByUsername(auth.getName());

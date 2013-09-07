@@ -3,7 +3,7 @@
 body {
 	font-family: Verdana, Helvetica, sans serif;
 	font-size: 11px;
-    margin: 0
+    margin: 5px;
 }
 
 .logo-header{
@@ -30,7 +30,7 @@ body {
 .main-container .t-b{float:left;background:url(images/b-bg.gif) repeat-x; width:100%; height:15px;}
 .main-container .t-b span.tb-l-corner{ float:left; background:url(images/b-l-corner.gif) no-repeat left; width:15px; height:15px;}
 .main-container .t-b span.tb-r-corner{float:right; background:url(images/b-r-corner.gif) no-repeat right; width:15px; height:15px;}
-.main-container .login-mainarea{ float:left;width:100%; height:auto; background: #FFF; border-left:1px solid #d2d2d2;border-right:1px solid #d2d2d2; padding:0px 0px 0px 0px;}
+.main-container .login-mainarea{ float:left;width:99.9%; height:auto; background: #FFF; border-left:1px solid #d2d2d2;border-right:1px solid #d2d2d2; padding:0px 0px 0px 0px;}
 .graybox-wrapper{margin:0px auto; width:316px;}
 .graybox-signintxt{float:left; margin:0px; padding:5px 0px 7px 8px; width:308px; height:20px; text-align:left;}
 
@@ -147,7 +147,7 @@ body {
 }
 
 .menu-box-small {
-	width: 150px!important;
+	/* width: 150px!important; */
 }
 
 .menu-admin {

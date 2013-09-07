@@ -1,26 +1,21 @@
 package com.techmahindra.aia.query;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.hibernate.*;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-
 /**
- * The {@link HibernateQueryBuilder} class is an utility class used to construct hibernate based queries.
- * 
+ * The {@link QueryBuilder} class is an utility class used to construct hibernate based queries.
+ *
  * @author Christian
- * 
  */
 @Component("queryBuilder")
 public class QueryBuilderImpl implements QueryBuilder {
@@ -41,13 +36,13 @@ public class QueryBuilderImpl implements QueryBuilder {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @param key
      * @param params
      * @return
      */
     public Query buildQuery(SessionFactory sessionFactory, String key, Map<String, Object> params,
-            PageableListParameters plp) {
+                            PageableListParameters plp) {
         Assert.notNull("Parameter key cannot be null", key);
 
         String queryString = queryProperties.getProperty(key);
@@ -86,16 +81,17 @@ public class QueryBuilderImpl implements QueryBuilder {
     }
 
     /**
-     * 
-     * @param sessionFactory
-     * @param key
-     * @param dynamicQueryBuilder
-     * @param paramMap
+     * Creates a hibernate query based on the hql referred to by the {@code key} and a dynamic criteria.
+     *
+     * @param sessionFactory The hibernate {@link SessionFactory}
+     * @param key            The query key
+     * @param queryFilter    The dynamic query filter
+     * @param paramMap       The parameter
      * @return
      */
-    public Query buildDynamicQuery(SessionFactory sessionFactory, String key, QueryFilterObject dynamicQueryBuilder,
-            Map<String, Object> paramMap) {
-        Query query = buildDynamicQuery(sessionFactory, key, dynamicQueryBuilder);
+    public Query buildDynamicQuery(SessionFactory sessionFactory, String key, QueryFilterObject queryFilter,
+                                   Map<String, Object> paramMap) {
+        Query query = buildDynamicQuery(sessionFactory, key, queryFilter);
         if (paramMap != null) {
             for (Entry<String, Object> entry : paramMap.entrySet()) {
                 query.setParameter(entry.getKey(), entry.getValue());
@@ -173,7 +169,7 @@ public class QueryBuilderImpl implements QueryBuilder {
     }
 
     public SQLQuery buildDynamicNativeQuery(SessionFactory sessionFactory, String key, String whereClause,
-            Map<String, Object> params) {
+                                            Map<String, Object> params) {
         Assert.notNull("Parameter key cannot be null", key);
 
         String queryString = queryProperties.getProperty(key);
@@ -212,7 +208,7 @@ public class QueryBuilderImpl implements QueryBuilder {
      */
     @Override
     public Query applyFilter(SessionFactory sessionFactory, List<?> collection, QueryFilterObject queryFilterObject,
-            Map<String, Object> parameterMap) {
+                             Map<String, Object> parameterMap) {
         Session session = sessionFactory.getCurrentSession();
 
         String queryFilter = queryFilterObject.buildQuery();

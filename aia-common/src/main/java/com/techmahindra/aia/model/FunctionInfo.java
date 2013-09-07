@@ -39,7 +39,7 @@ public class FunctionInfo implements Serializable {
     @JoinColumn(name = "parentFunctionInfoId", insertable = false, updatable = false)
     private FunctionInfo functionInfo;
 
-    @OneToMany(mappedBy = "functionInfo")
+    @OneToMany(mappedBy = "functionInfo", fetch = FetchType.LAZY)
     private List<FunctionInfo> children;
 
     @Version
