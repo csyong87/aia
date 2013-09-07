@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * The entity class {@link UserRole}. The mapping between the user and the role.
+ */
 @Entity
 @Table(name = "USER_ROLE")
 public class UserRole implements Serializable {
@@ -56,10 +59,6 @@ public class UserRole implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dateupdated", nullable = true)
     private Date dateUpdated;
-
-    public enum Status {
-        ACTIVE, INACTIVE, DELETED
-    }
 
     public Integer getUserRoleId() {
         return userRoleId;
@@ -147,5 +146,20 @@ public class UserRole implements Serializable {
 
     public void setDateUpdated(final Date dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    public enum Status {
+        /**
+         * When User Role Mapping Is Still in Use
+         */
+        ACTIVE,
+        /**
+         * When User Role Mapping is temporarily disabled
+         */
+        INACTIVE,
+        /**
+         * When User Role Mapping is permanently disabled
+         */
+        DELETED
     }
 }

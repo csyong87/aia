@@ -1,31 +1,31 @@
 package com.techmahindra.aia.web.security;
 
-import java.io.IOException;
-import java.util.Calendar;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.techmahindra.aia.constants.Constants;
+import com.techmahindra.aia.model.UserInfo;
+import com.techmahindra.aia.service.FunctionInfoService;
+import com.techmahindra.aia.service.UserInfoService;
+import com.techmahindra.aia.service.model.UserContext;
+import com.techmahindra.aia.web.datastore.DataStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
-import com.techmahindra.aia.model.UserInfo;
-import com.techmahindra.aia.service.UserInfoService;
-import com.techmahindra.aia.service.model.UserContext;
-import com.techmahindra.aia.web.datastore.DataStore;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Calendar;
 
 /**
  * <p>
  * An AIA implementation of {@link AuthenticationSuccessHandler}. This class is called by the Spring Security Framework
  * right after successful authentication.
  * </p>
- * 
+ *
  * @author Christian
- * 
  */
 public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -37,11 +37,13 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler im
     @Autowired
     private UserInfoService userInfoService;
 
+    @Autowired
+    private FunctionInfoService functionInfoService;
+
     /**
      * Constructor which sets the <tt>defaultTargetUrl</tt> property of the base class.
-     * 
-     * @param defaultTargetUrl
-     *            the URL to which the user should be redirected on successful authentication.
+     *
+     * @param defaultTargetUrl the URL to which the user should be redirected on successful authentication.
      */
     public AuthSuccessHandler(final String defaultTargetUrl) {
         setDefaultTargetUrl(defaultTargetUrl);
@@ -49,13 +51,12 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler im
 
     /**
      * Invokes the configured {@code RedirectStrategy} with the URL returned by the {@code determineTargetUrl} method.
-     * <p>
+     * <p/>
      * The redirect will not be performed if the response has already been committed.
      *
-     * @param request The http request object
-     * @param response The http response object
+     * @param request        The http request object
+     * @param response       The http response object
      * @param authentication The user's authentication principal
-     *
      * @throws IOException
      * @throws ServletException
      */
@@ -70,6 +71,13 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler im
         }
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        //check if the logged in user has an admin role
+        for (GrantedAuthority ga : auth.getAuthorities()) {
+            if(ga.getAuthority().equalsIgnoreCase(Constants.ROLE_ADMIN)) {
+
+            }
+        }
 
         // get the user's info object
         UserInfo userInfo = userInfoService.getUserInfoByUsername(auth.getName());

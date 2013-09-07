@@ -1,8 +1,8 @@
 package com.techmahindra.aia.service.security;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.techmahindra.aia.model.RoleInfo;
+import com.techmahindra.aia.model.UserInfo;
+import com.techmahindra.aia.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,9 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.techmahindra.aia.model.RoleInfo;
-import com.techmahindra.aia.model.UserInfo;
-import com.techmahindra.aia.service.UserInfoService;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA. User: Christian Date: 8/17/13 Time: 5:31 PM To change this template use File | Settings |

@@ -3,6 +3,7 @@
 body {
 	font-family: Verdana, Helvetica, sans serif;
 	font-size: 11px;
+    margin: 0
 }
 
 .logo-header{
@@ -147,4 +148,11 @@ body {
 
 .menu-box-small {
 	width: 150px!important;
+}
+
+.menu-admin {
+    background: url(images/gears_45x45.png);
+    padding: 0px!important;
+    height: 30px;
+    width:5px;
 }

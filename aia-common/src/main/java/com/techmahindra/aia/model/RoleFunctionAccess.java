@@ -153,6 +153,13 @@ public class RoleFunctionAccess implements Serializable {
     }
 
     public enum Status {
-        ACTIVE, DELETED
+        /**
+         * If the Role - Function Relationship is still valid
+         */
+        ACTIVE,
+        /**
+         * If the Role - Function Relationship is invalid
+         */
+        DELETED
     }
 }

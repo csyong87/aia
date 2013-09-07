@@ -1,21 +1,14 @@
 package com.techmahindra.aia.model;
 
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
-
+/**
+ * The entity class {@link FunctionInfo}
+ */
 @Entity
 @Table(name = "FUNCTION_INFO")
 public class FunctionInfo implements Serializable {
@@ -46,6 +39,9 @@ public class FunctionInfo implements Serializable {
     @JoinColumn(name = "parentFunctionInfoId", insertable = false, updatable = false)
     private FunctionInfo functionInfo;
 
+    @OneToMany(mappedBy = "functionInfo")
+    private List<FunctionInfo> children;
+
     @Version
     @Column(name = "version", nullable = false)
     private Long version;
@@ -74,8 +70,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param functionInfoId
-     *            the functionInfoId to set
+     * @param functionInfoId the functionInfoId to set
      */
     public void setFunctionInfoId(Integer functionInfoId) {
         this.functionInfoId = functionInfoId;
@@ -89,8 +84,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
@@ -104,8 +98,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param url
-     *            the url to set
+     * @param url the url to set
      */
     public void setUrl(String url) {
         this.url = url;
@@ -119,8 +112,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param description
-     *            the description to set
+     * @param description the description to set
      */
     public void setDescription(String description) {
         this.description = description;
@@ -134,8 +126,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param parentFunctionInfoId
-     *            the parentFunctionInfoId to set
+     * @param parentFunctionInfoId the parentFunctionInfoId to set
      */
     public void setParentFunctionInfoId(Integer parentFunctionInfoId) {
         this.parentFunctionInfoId = parentFunctionInfoId;
@@ -149,8 +140,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param functionInfo
-     *            the functionInfo to set
+     * @param functionInfo the functionInfo to set
      */
     public void setFunctionInfo(FunctionInfo functionInfo) {
         this.functionInfo = functionInfo;
@@ -164,8 +154,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param version
-     *            the version to set
+     * @param version the version to set
      */
     public void setVersion(Long version) {
         this.version = version;
@@ -179,8 +168,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param createdBy
-     *            the createdBy to set
+     * @param createdBy the createdBy to set
      */
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
@@ -194,8 +182,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param updatedBy
-     *            the updatedBy to set
+     * @param updatedBy the updatedBy to set
      */
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
@@ -209,8 +196,7 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param dateCreated
-     *            the dateCreated to set
+     * @param dateCreated the dateCreated to set
      */
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
@@ -224,11 +210,23 @@ public class FunctionInfo implements Serializable {
     }
 
     /**
-     * @param dateUpdated
-     *            the dateUpdated to set
+     * @param dateUpdated the dateUpdated to set
      */
     public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
 
+    /**
+     * @return The sub functions
+     */
+    public List<FunctionInfo> getChildren() {
+        return children;
+    }
+
+    /**
+     * @param children The sub functions
+     */
+    public void setChildren(final List<FunctionInfo> children) {
+        this.children = children;
+    }
 }
