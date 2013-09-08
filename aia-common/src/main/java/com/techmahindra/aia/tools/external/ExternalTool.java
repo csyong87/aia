@@ -1,7 +1,7 @@
 package com.techmahindra.aia.tools.external;
 
 /**
- * Defines the methods for interacting with external tools. e.g. Perl, Python, etc
+ * Defines the methods for interacting with external tools. e.g. PerlDetector, PythonDetector, etc
  * <p/>
  *
  * @author Christian

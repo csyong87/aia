@@ -1,5 +1,12 @@
 package com.techmahindra.aia.tools.external;
 
+import com.techmahindra.aia.constants.Constants;
+import com.techmahindra.aia.tools.exec.LogOutputStreamCollector;
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.ExecuteResultHandler;
+import org.apache.commons.exec.ExecuteStreamHandler;
+import org.apache.commons.exec.Executor;
+
 /**
  * Checks for the presence of PerlDetector in the system.
  * <p/>
@@ -7,7 +14,52 @@ package com.techmahindra.aia.tools.external;
  *
  * @author Christian
  */
-public class PerlDetector implements ExternalTool {
+public class PerlDetector extends AbstractExternalToolDetector {
+
+    /**
+     * Pattern for getting perl version.
+     * <p/>
+     * v - Has to start with 'v' <br/>
+     * (\d*\.*)+ - One or more group of digit followed by a dot '.'. The asterisk '*' after the \d and \. indicates
+     * 0 or more instances
+     */
+    private static final String PERL_VERSION_PATTERN = "v(\\d+\\.*)+";
+    private String version;
+
+    /**
+     * Creates a {@link PerlDetector}
+     *
+     * @param output        The class where the execution output steam will be collected
+     * @param executor      The command executor
+     * @param streamHandler The class that will handle the output steam
+     * @param resultHandler The result handler that will be called once the process is complete
+     */
+    public PerlDetector(final LogOutputStreamCollector output, final Executor executor,
+            final ExecuteStreamHandler streamHandler, final ExecuteResultHandler resultHandler) {
+        super(output, executor, streamHandler, resultHandler);
+    }
+
+    /**
+     * The {@link org.apache.commons.exec.CommandLine command}  to be executed
+     *
+     * @return The {@link org.apache.commons.exec.CommandLine command}  to be executed
+     */
+    @Override
+    protected CommandLine getCommand() {
+        CommandLine cmdLine = CommandLine.parse("perl");
+        cmdLine.addArgument("-version");
+        return cmdLine;
+    }
+
+    /**
+     * Returns the pattern for matching the version.
+     *
+     * @return The pattern for matching the version
+     */
+    @Override
+    protected String getVersionPattern() {
+        return PERL_VERSION_PATTERN;
+    }
 
     /**
      * Checks if an external tool exist in the system.
@@ -16,7 +68,11 @@ public class PerlDetector implements ExternalTool {
      */
     @Override
     public boolean exist() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        if (version == null) {
+            execCommand();
+        }
+
+        return !version.equalsIgnoreCase(Constants.VERSION_NOT_AVAILABLE);
     }
 
     /**
@@ -27,6 +83,16 @@ public class PerlDetector implements ExternalTool {
      */
     @Override
     public String getVersion() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return version;
+    }
+
+    /**
+     * Sets the {@code version} of the tool installed.
+     *
+     * @param version The version of the tool installed
+     */
+    @Override
+    protected void setVersion(final String version) {
+        this.version = version;
     }
 }

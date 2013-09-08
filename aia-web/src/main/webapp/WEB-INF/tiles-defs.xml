@@ -26,4 +26,8 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
 	</definition>
 
+    <definition name="system" extends="noLeftMenuLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/system.jsp" />
+    </definition>
+
 </tiles-definitions>
