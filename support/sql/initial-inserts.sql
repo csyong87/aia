@@ -29,15 +29,15 @@ INSERT INTO USER_ROLE (USERROLEID, CREATEDBY, DATECREATED, DATEUPDATED, ROLEINFO
 INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
   VALUES (1, 'ADMIN', sysdate, null, 'Administration', 'Administration', null, null, '/aia-web/administration.html', 0);
 INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
-  VALUES (2, 'ADMIN', sysdate, null, 'User Management', 'User Management', 1, null, '/aia-web/userManagement.html', 0);
+  VALUES (2, 'ADMIN', sysdate, null, 'User Management', 'User Management', 1, null, '/aia-web/usermanagement.html', 0);
 INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
-  VALUES (3, 'ADMIN', sysdate, null, 'System Management', 'System Management', 1, null, '/aia-web/systemManagement.html', 0);
+  VALUES (3, 'ADMIN', sysdate, null, 'System Management', 'System Management', 1, null, '/aia-web/system.html', 0);
 
 -- Profiles
 INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
   VALUES (10, 'ADMIN', sysdate, null, 'Profile', 'Profile', null, null, '/aia-web/profile.html', 0);
 INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
-  VALUES (11, 'ADMIN', sysdate, null, 'Account Settings', 'Account Settings', 10, null, '/aia-web/accountSettings.html', 0);
+  VALUES (11, 'ADMIN', sysdate, null, 'Account Settings', 'Account Settings', 10, null, '/aia-web/accountsettings.html', 0);
 INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
   VALUES (12, 'ADMIN', sysdate, null, 'Logout', 'Logout', 10, null, '/aia-web/logout.html', 0);
 
@@ -55,15 +55,20 @@ INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, 
 INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
   VALUES (122, 'ADMIN', sysdate, null, 'Webcomm', 'Webcomm', 120, null, '/aia-web/reports/wc.html', 0);
 
-insert into ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
-  values ('ADMIN', sysdate, null, 100, 3, 'ACTIVE', null, 0, 1);
-insert into ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
-  values ('ADMIN', sysdate, null, 110, 3, 'ACTIVE', null, 0, 2);
-insert into ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
-  values ('ADMIN', sysdate, null, 120, 3, 'ACTIVE', null, 0, 3);
-insert into ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
-  values ('ADMIN', sysdate, null, 121, 3, 'ACTIVE', null, 0, 4);
-insert into ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
-  values ('ADMIN', sysdate, null, 122, 3, 'ACTIVE', null, 0, 5);
+INSERT INTO FUNCTION_INFO (FUNCTIONINFOID, CREATEDBY, DATECREATED, DATEUPDATED, DESCRIPTION, NAME, PARENTFUNCTIONINFOID, UPDATEDBY, URL, VERSION)
+  VALUES (130, 'ADMIN', sysdate, null, 'Servers', 'Servers', null, null, '/aia-web/servers.html', 0);
+
+INSERT INTO ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
+  VALUES ('ADMIN', sysdate, null, 100, 3, 'ACTIVE', null, 0, 1);
+INSERT INTO ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
+  VALUES ('ADMIN', sysdate, null, 110, 3, 'ACTIVE', null, 0, 2);
+INSERT INTO ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
+  VALUES ('ADMIN', sysdate, null, 120, 3, 'ACTIVE', null, 0, 3);
+INSERT INTO ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
+  VALUES ('ADMIN', sysdate, null, 121, 3, 'ACTIVE', null, 0, 4);
+INSERT INTO ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
+  VALUES ('ADMIN', sysdate, null, 122, 3, 'ACTIVE', null, 0, 5);
+INSERT INTO ROLE_FUNCTION_ACCESS (createdby, datecreated, dateupdated, functioninfoid, roleinfoid, status, updatedby, version, rolefunctionaccessid)
+  VALUES ('ADMIN', sysdate, null, 130, 3, 'ACTIVE', null, 0, 6);
 
 COMMIT;

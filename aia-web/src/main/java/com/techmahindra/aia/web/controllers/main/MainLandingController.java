@@ -52,7 +52,6 @@ public class MainLandingController extends ControllerBase {
         List<FunctionInfo> workFunctions = functionInfoService.getFunctions(userDetails.getUsername());
         session.setAttribute("workFunctions", workFunctions);
 
-        // NOOP
         return "main";
     }
 }

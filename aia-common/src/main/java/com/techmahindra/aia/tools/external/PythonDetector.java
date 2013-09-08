@@ -19,7 +19,7 @@ public class PythonDetector extends AbstractExternalToolDetector {
     /**
      * Pattern for getting the python version.
      * <p/>
-     * (\d*\.*)+ - One or more group of digit followed by a dot '.'. The asterisk '*' after the \d and \. indicates
+     * (\d+\.*)+ - One or more group of digit followed by a dot '.'. The asterisk '*' after the \d and \. indicates
      * 0 or more instances
      */
     private static final String PYTHON_VERSION_PATTERN = "(\\d+\\.*)+";
