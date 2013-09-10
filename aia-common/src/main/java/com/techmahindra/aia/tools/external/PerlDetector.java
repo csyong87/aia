@@ -14,13 +14,14 @@ import org.apache.commons.exec.Executor;
  *
  * @author Christian
  */
-public class PerlDetector extends AbstractExternalToolDetector {
+public class PerlDetector extends AbstractToolDetector {
 
     /**
      * Pattern for getting perl version.
      * <p/>
      * v - Has to start with 'v' <br/>
-     * (\d*\.*)+ - One or more group of digit followed by a dot '.'. The asterisk '*' after the \d and \. indicates
+     * (\d+\.*)+ - One or more group of digit followed by a dot '.'. The plus '+' after the \d indicates 1 or
+     * more instances of a digit, the asterisk '*' after the \. indicates 0 or more instances of the dot '.' sign
      * 0 or more instances
      */
     private static final String PERL_VERSION_PATTERN = "v(\\d+\\.*)+";

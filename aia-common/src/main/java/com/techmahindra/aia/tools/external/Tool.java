@@ -6,7 +6,7 @@ package com.techmahindra.aia.tools.external;
  *
  * @author Christian
  */
-public interface ExternalTool {
+public interface Tool {
 
     /**
      * Checks if an external tool exist in the system.

@@ -14,7 +14,7 @@ import org.apache.commons.exec.Executor;
  *
  * @author Christian
  */
-public class PythonDetector extends AbstractExternalToolDetector {
+public class PythonDetector extends AbstractToolDetector {
 
     /**
      * Pattern for getting the python version.

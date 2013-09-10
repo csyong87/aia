@@ -14,8 +14,10 @@ import java.util.regex.Pattern;
 /**
  * Executes the {@link CommandLine getCommand} and parses the tool version using the pattern referred by {@code
  * getVersionPattern}
+ *
+ * @author Christian
  */
-public abstract class AbstractExternalToolDetector implements ExternalTool {
+public abstract class AbstractToolDetector implements Tool {
 
     private LogOutputStreamCollector output;
     private ExecuteStreamHandler streamHandler;
@@ -28,7 +30,7 @@ public abstract class AbstractExternalToolDetector implements ExternalTool {
      * @param streamHandler The class that will handle the output steam
      * @param resultHandler The result handler that will be called once the process is complete
      */
-    protected AbstractExternalToolDetector(final LogOutputStreamCollector output, final Executor executor,
+    protected AbstractToolDetector(final LogOutputStreamCollector output, final Executor executor,
             final ExecuteStreamHandler streamHandler, final ExecuteResultHandler resultHandler) {
         this.output = output;
         this.executor = executor;
