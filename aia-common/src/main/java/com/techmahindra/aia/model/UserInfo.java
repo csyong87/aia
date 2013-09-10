@@ -1,86 +1,78 @@
 package com.techmahindra.aia.model;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 import org.jasypt.hibernate4.type.EncryptedStringType;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * An entity that represents an instance of an AIA User
+ * <p/>
+ */
 @Entity
 @Table(name = "USER_INFO")
-@TypeDefs({ @TypeDef(name = "encryptedString", typeClass = EncryptedStringType.class, parameters = { @Parameter(name = "encryptorRegisteredName", value = "strongHibernateStringEncryptor") }) })
+@TypeDefs({@TypeDef(name = "encryptedString", typeClass = EncryptedStringType.class,
+        parameters = {@Parameter(name = "encryptorRegisteredName", value = "strongHibernateStringEncryptor")})})
 public class UserInfo implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -6368253182251170568L;
-
+    /**
+     * The entity's unique identifier
+     * <p/>
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "userinfoid")
     private Integer userInfoId;
-
+    /**
+     * The user's login id
+     */
     @Column(name = "loginid", length = 24, nullable = false)
     private String loginId;
-
     @Column(name = "domain", length = 16, nullable = true)
     private String domain;
-
     @Column(name = "username", length = 32, nullable = false)
     private String username;
-
     @Column(name = "mobilenumber", length = 16, nullable = false)
     private String mobileNumber;
-
     /**
      * User's login password.
      */
     @Column(name = "password", length = 500, nullable = false)
     private String password;
-
     @Column(name = "email", length = 128, nullable = false)
     private String email;
-
     @Type(type = "encryptedString")
     @Column(name = "emailpassword", length = 255, nullable = false)
     private String emailPassword;
 
+    /**
+     * To avoid the outlook account from being locked. AIA will try to connect to the exchange server only once. If
+     * unsuccessful, this field will be set to false until manually triggered to connect by the account's owner
+     */
+    @Basic
+    @Column(name = "isemailvalid", length = 1, nullable = false)
+    private Boolean isEmailValid;
     @Basic
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 16, nullable = false)
     private Status status;
-
-    public enum Status {
-        ACTIVE, INACTIVE, DELETED, PENDING_APPROVAL
-    }
-
     @Column(name = "createdby", nullable = false)
     private String createdBy;
-
     @Column(name = "updatedby", nullable = true)
     private String updatedBy;
-
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "datecreated", nullable = false)
     private Date dateCreated;
-
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dateupdated", nullable = true)
@@ -94,8 +86,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param userInfoId
-     *            the userInfoId to set
+     * @param userInfoId the userInfoId to set
      */
     public void setUserInfoId(Integer userInfoId) {
         this.userInfoId = userInfoId;
@@ -109,8 +100,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param loginId
-     *            the loginId to set
+     * @param loginId the loginId to set
      */
     public void setLoginId(String loginId) {
         this.loginId = loginId;
@@ -124,8 +114,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param domain
-     *            the domain to set
+     * @param domain the domain to set
      */
     public void setDomain(String domain) {
         this.domain = domain;
@@ -139,8 +128,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param username
-     *            the username to set
+     * @param username the username to set
      */
     public void setUsername(String username) {
         this.username = username;
@@ -154,8 +142,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param mobileNumber
-     *            the mobileNumber to set
+     * @param mobileNumber the mobileNumber to set
      */
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
@@ -169,8 +156,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param password
-     *            the password to set
+     * @param password the password to set
      */
     public void setPassword(String password) {
         this.password = password;
@@ -184,8 +170,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param email
-     *            the email to set
+     * @param email the email to set
      */
     public void setEmail(String email) {
         this.email = email;
@@ -199,8 +184,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param emailPassword
-     *            the emailPassword to set
+     * @param emailPassword the emailPassword to set
      */
     public void setEmailPassword(String emailPassword) {
         this.emailPassword = emailPassword;
@@ -214,8 +198,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param status
-     *            the status to set
+     * @param status the status to set
      */
     public void setStatus(Status status) {
         this.status = status;
@@ -229,8 +212,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param createdBy
-     *            the createdBy to set
+     * @param createdBy the createdBy to set
      */
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
@@ -244,8 +226,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param updatedBy
-     *            the updatedBy to set
+     * @param updatedBy the updatedBy to set
      */
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
@@ -259,8 +240,7 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param dateCreated
-     *            the dateCreated to set
+     * @param dateCreated the dateCreated to set
      */
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
@@ -274,11 +254,14 @@ public class UserInfo implements Serializable {
     }
 
     /**
-     * @param dateUpdated
-     *            the dateUpdated to set
+     * @param dateUpdated the dateUpdated to set
      */
     public void setDateUpdated(Date dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    public enum Status {
+        ACTIVE, INACTIVE, DELETED, PENDING_APPROVAL
     }
 
 }
